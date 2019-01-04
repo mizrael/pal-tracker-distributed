@@ -8,7 +8,9 @@ applications:
   path: Applications/TimesheetsServer/bin/Release/netcoreapp2.1/publish
   env:
     REGISTRATION_SERVER_ENDPOINT: http://registration-pal-dagu.apps.pikes.pal.pivotal.io/
+    GRANT_TYPE: client_credentials
   services:
   - tracker-timesheets-database
   - tracker-circuit-breaker-dashboard
   - tracker-amqp
+  - tracker-sso

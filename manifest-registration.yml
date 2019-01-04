@@ -6,5 +6,8 @@ applications:
   routes:
   - route: registration-pal-dagu.apps.pikes.pal.pivotal.io
   path: Applications/RegistrationServer/bin/Release/netcoreapp2.1/publish
+  env:
+    GRANT_TYPE: client_credentials
   services:
   - tracker-registration-database
+  - tracker-sso
