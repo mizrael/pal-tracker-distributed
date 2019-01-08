@@ -27,6 +27,7 @@ namespace IntegrationTest
                 .SetEnvironmentVariable("DISABLE_AUTH", "true")
                 .SetEnvironmentVariable("SPRING__CLOUD__CONFIG__ENABLED", "false")
                 .SetEnvironmentVariable("SPRING__CLOUD__CONFIG__FAILFAST", "false")
+                .SetEnvironmentVariable("EUREKA__CLIENT__SHOULDREGISTERWITHEUREKA", "false")
                 .Build();
 
             _allocationsServer = TestAppServerBuilder()
@@ -37,6 +38,7 @@ namespace IntegrationTest
                 .SetEnvironmentVariable("DISABLE_AUTH", "true")
                 .SetEnvironmentVariable("SPRING__CLOUD__CONFIG__ENABLED", "false")
                 .SetEnvironmentVariable("SPRING__CLOUD__CONFIG__FAILFAST", "false")
+                .SetEnvironmentVariable("EUREKA__CLIENT__SHOULDREGISTERWITHEUREKA", "false")
                 .Build();
 
             _backlogServer = TestAppServerBuilder()
@@ -47,6 +49,7 @@ namespace IntegrationTest
                 .SetEnvironmentVariable("DISABLE_AUTH", "true")
                 .SetEnvironmentVariable("SPRING__CLOUD__CONFIG__ENABLED", "false")
                 .SetEnvironmentVariable("SPRING__CLOUD__CONFIG__FAILFAST", "false")
+                .SetEnvironmentVariable("EUREKA__CLIENT__SHOULDREGISTERWITHEUREKA", "false")
                 .Build();
 
             _timesheetsServer = TestAppServerBuilder()
@@ -57,6 +60,7 @@ namespace IntegrationTest
                 .SetEnvironmentVariable("DISABLE_AUTH", "true")
                 .SetEnvironmentVariable("SPRING__CLOUD__CONFIG__ENABLED", "false")
                 .SetEnvironmentVariable("SPRING__CLOUD__CONFIG__FAILFAST", "false")
+                .SetEnvironmentVariable("EUREKA__CLIENT__SHOULDREGISTERWITHEUREKA", "false")
                 .Build();
         }
 

@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Steeltoe.Security.Authentication.CloudFoundry;
+using Pivotal.Discovery.Client;
+using Steeltoe.Common.Discovery;
 
 namespace RegistrationServer
 {
@@ -51,6 +53,8 @@ namespace RegistrationServer
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddCloudFoundryJwtBearer(Configuration);
+
+            services.AddDiscoveryClient(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +64,7 @@ namespace RegistrationServer
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseDiscoveryClient();
         }
     }
 }

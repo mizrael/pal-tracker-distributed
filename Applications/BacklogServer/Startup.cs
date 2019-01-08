@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Steeltoe.Security.Authentication.CloudFoundry;
+using Pivotal.Discovery.Client;
+using Steeltoe.Common.Discovery;
 
 namespace BacklogServer
 {
@@ -63,6 +65,8 @@ namespace BacklogServer
             services.AddHystrixMetricsStream(Configuration);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddCloudFoundryJwtBearer(Configuration);
+
+            services.AddDiscoveryClient(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,6 +76,7 @@ namespace BacklogServer
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseDiscoveryClient();
             app.UseHystrixMetricsStream();
             app.UseHystrixRequestContext();
         }

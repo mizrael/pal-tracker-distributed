@@ -14,6 +14,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Steeltoe.Security.Authentication.CloudFoundry;
+using Pivotal.Discovery.Client;
+using Steeltoe.Common.Discovery;
 
 namespace AllocationsServer
 {
@@ -64,6 +66,8 @@ namespace AllocationsServer
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddCloudFoundryJwtBearer(Configuration);
+
+            services.AddDiscoveryClient(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,8 +77,9 @@ namespace AllocationsServer
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            app.UseDiscoveryClient();
             app.UseHystrixMetricsStream();
-            app.UseHystrixRequestContext();
+            app.UseHystrixRequestContext();            
         }
     }
 }
